@@ -2,12 +2,12 @@ const RPCClient = require("./client");
 const { OPEN } = require("ws");
 
 class RPCServerClient extends RPCClient {
-    constructor(options, {ws, handshake, session}) {
+    constructor(options: any, { ws, handshake, session }: any) {
         super(options);
 
         this._session = session;
         this._handshake = handshake;
-        
+
         this._state = OPEN;
         this._identity = this._options.identity;
         this._ws = ws;
@@ -28,4 +28,4 @@ class RPCServerClient extends RPCClient {
     }
 }
 
-module.exports = RPCServerClient;
+export default RPCServerClient;

@@ -1,7 +1,7 @@
 import { EventEmitter, once } from 'events';
 const { WebSocketServer, OPEN, CLOSING, CLOSED } = require('ws');
 const { createServer } = require('http');
-const RPCServerClient = require('./server-client');
+import RPCServerClient from './server-client';
 const { abortHandshake, parseSubprotocols } = require('./ws-util');
 const standardValidators = require('./standard-validators');
 const { getPackageIdent } = require('./util');
@@ -38,6 +38,10 @@ type AuthCallback = (
     handshake: any,
     signal: AbortSignal
 ) => void;
+
+declare interface RPCServer {
+    on(event: 'client', listener: (client: RPCServerClient) => void): this;
+}
 
 class RPCServer extends EventEmitter {
     _state: number;
