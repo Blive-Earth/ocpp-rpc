@@ -32,7 +32,7 @@ interface CloseOptions {
     force?: boolean,
 }
 
-type AuthCallback = (
+export type AuthCallback = (
     accept: (session?: any, protocol?: string | false) => void,
     reject: (code?: number, message?: string) => void,
     handshake: any,
